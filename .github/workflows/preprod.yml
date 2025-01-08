@@ -19,7 +19,7 @@ jobs:
           dev: no
           args: --no-interaction --prefer-dist --optimize-autoloader --no-scripts --ignore-platform-req=ext-zip
 
-      - name: Check dir deploy
+      - name: Checkout project directory preprod mony
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.DEPLOY_HOST }}
@@ -27,6 +27,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
+            cd ~/preprod-mony
             ls -la
 
       - name: TestMode - Unit tests
