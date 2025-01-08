@@ -17,13 +17,13 @@
 
     <coverage>
         <include>
-            <directory suffix=".php">./src/Controller</directory>
+            <directory suffix=".php">./src</directory>
         </include>
     </coverage>
 
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory>./tests/Controller</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>

@@ -7,7 +7,7 @@ use App\Controller\HomeController as HomeController;
 
 class HomeControllerTest extends TestCase
 {
-    public function test_calcul()
+    public function testCalcul()
     {
         $this->assertEquals(4, (new HomeController)->calcul(2), "This function is supposed to calculate the number of products");
     }
