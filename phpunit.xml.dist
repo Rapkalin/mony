@@ -15,7 +15,7 @@
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.6" />
     </php>
 
-    <coverage processUncoveredFiles="true">
+    <coverage>
         <include>
             <directory suffix=".php">./src/Controller</directory>
         </include>
