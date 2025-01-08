@@ -24,7 +24,6 @@ jobs:
         with:
           php_version: 8.2
           bootstrap: vendor/autoload.php
-          test_suffix: "test.php"
 
   build:
     runs-on: ubuntu-latest
