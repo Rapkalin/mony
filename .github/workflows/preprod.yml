@@ -24,6 +24,7 @@ jobs:
         with:
           php_version: 8.2
           bootstrap: vendor/autoload.php
+          configuration: phpunit.xml.dist
 
   build:
     runs-on: ubuntu-latest
