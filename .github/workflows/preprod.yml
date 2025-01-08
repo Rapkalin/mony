@@ -25,6 +25,7 @@ jobs:
           php_version: 8.2
           bootstrap: vendor/autoload.php
           test_suffix: "Controller.php"
+          args: --debug
 
   build:
     runs-on: ubuntu-latest
