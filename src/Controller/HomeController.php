@@ -18,7 +18,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    private function calcul(int $int): int
+    public function calcul(int $int): int
     {
         return $int*2;
     }
