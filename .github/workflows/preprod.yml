@@ -19,6 +19,12 @@ jobs:
           dev: no
           args: --no-interaction --prefer-dist --optimize-autoloader --no-scripts --ignore-platform-req=ext-zip
 
+      - name: Check dir deploy
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          script: |
+            ls -la
+
       - name: TestMode - Unit tests
         uses: php-actions/phpunit@v3
         with:
