@@ -34,7 +34,7 @@ jobs:
         uses: php-actions/phpunit@v3
         with:
           php_version: 8.2
-          configuration: phpunit.xml.dist
+          bootstrap: vendor/autoload.php
 
   build:
     runs-on: ubuntu-latest
