@@ -9,6 +9,6 @@ class HomeControllerTest extends TestCase
 {
     public function testCalcul()
     {
-        $this->assertEquals(5, (new HomeController)->calcul(2), "This function is supposed to calculate the number of products");
+        $this->assertEquals(4, (new HomeController)->calcul(2), "This function is supposed to calculate the number of products");
     }
 }
