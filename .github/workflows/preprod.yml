@@ -19,6 +19,9 @@ jobs:
 
       - name: TestMode - Install dependencies
         uses: php-actions/composer@v6
+        with:
+          dev: no
+          args: --no-interaction --prefer-dist --optimize-autoloader --no-scripts --ignore-platform-req=ext-zip
 
       - name: TestMode - Unit tests
         uses: php-actions/phpunit@v3
