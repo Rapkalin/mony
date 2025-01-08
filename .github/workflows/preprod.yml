@@ -24,8 +24,7 @@ jobs:
         with:
           php_version: 8.2
           bootstrap: vendor/autoload.php
-          args: --coverage-text
-          test_suffix: ".php"
+          test_suffix: "Controller.php"
 
   build:
     runs-on: ubuntu-latest

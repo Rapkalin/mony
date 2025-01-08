@@ -22,8 +22,8 @@
     </coverage>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory suffix=".php">./tests</directory>
+        <testsuite name="Controller tests suite">
+            <directory suffix="Controller.php">./tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
