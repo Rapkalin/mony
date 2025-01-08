@@ -27,7 +27,7 @@ jobs:
           key: ${{ secrets.DEPLOY_KEY }}
           port: 22
           script: |
-            cd ~/preprod-mony
+            cd ~/preprod-mony/website
             ls -la
 
       - name: TestMode - Unit tests
