@@ -105,9 +105,6 @@ jobs:
           script: |
             ln -nsrf ~/preprod-mony/shared/.env ~/preprod-mony/website/.env
             rm -rf ~/preprod-mony/website/.htaccess ~/preprod-mony/website/.git ~/preprod-mony/website/.github ~/preprod-mony/website/phpunit.xml.dist  ~/preprod-mony/website/release.zip
-            ln -nsrf ~/preprod-mony/shared/.htaccess ~/preprod-mony/website/.htaccess
-            ln -nsrf ~/preprod-mony/shared/.htpasswd ~/preprod-mony/website/.htpasswd
-            ln -nsrf ~/preprod-mony/shared/uploads ~/preprod-mony/website/public/uploads
 
       - name: Clear cache, importmap and asset:compile
         uses: appleboy/ssh-action@v0.1.10
@@ -119,6 +116,5 @@ jobs:
           script: |
             cd ~/preprod-mony/website
             /usr/bin/php8.2-cli bin/console cache:clear --env=prod --no-interaction >> log_deploy.log
-            /usr/bin/php8.2-cli bin/console doctrine:migrations:migrate >> log_deploy.log
             /usr/bin/php8.2-cli bin/console importmap:install >> log_deploy.log
             /usr/bin/php8.2-cli bin/console asset:compile >> log_deploy.log
