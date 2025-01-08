@@ -6,15 +6,36 @@ on:
       - '*'
 
 jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: TestMode - Checkout mony
+        uses: actions/checkout@v3
+
+      - name: TestMode - Install dependencies
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          args: --no-interaction --prefer-dist --optimize-autoloader --no-scripts --ignore-platform-req=ext-zip
+
+      - name: TestMode - Unit tests
+        uses: php-actions/phpunit@v3
+        with:
+          php_version: 8.2
+          bootstrap: vendor/autoload.php
+          test_suffix: "test.php"
+
   build:
     runs-on: ubuntu-latest
+    needs: unit-tests
     strategy:
       fail-fast: true
       matrix:
         php: [ 8.2 ]
 
     steps:
-      - name: checkout mony
+      - name: Checkout mony
         uses: actions/checkout@v3
 
       - name: Setup PHP
@@ -96,9 +117,7 @@ jobs:
           port: 22
           script: |
             ln -nsrf ~/mony/shared/.env ~/mony/website/.env
-            rm -rf ~/mony/website/.htaccess ~/mony/website/.git ~/mony/website/.github ~/mony/website/phpunit.xml.dist  ~/mony/website/release.zip
-            ln -nsrf ~/mony/shared/.htaccess ~/mony/website/.htaccess
-            ln -nsrf ~/mony/shared/.htpasswd ~/mony/website/.htpasswd
+            rm -rf ~/mony/website/.git ~/mony/website/.github ~/mony/website/phpunit.xml.dist  ~/mony/website/release.zip
             ln -nsrf ~/mony/shared/uploads ~/mony/website/public/uploads
 
       - name: Clear cache, importmap and asset:compile
