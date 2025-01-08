@@ -1,2 +1,2 @@
-# poc-php-unit
-A simple POC to test PHP unit
+# Mony
+A simple App to monitor your daily expenses
