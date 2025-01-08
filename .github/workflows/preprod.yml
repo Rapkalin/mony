@@ -8,10 +8,6 @@ on:
 jobs:
   build-test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [ 8.2 ]
 
     steps:
       - name: TestMode - Checkout mony
@@ -25,6 +21,8 @@ jobs:
 
       - name: TestMode - Unit tests
         uses: php-actions/phpunit@v3
+        with:
+          php_version: 8.2
 
   build:
     runs-on: ubuntu-latest
