@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 8.2 ]
+        php: [ 8.3 ]
 
     steps:
       - name: Checkout mony
@@ -41,7 +41,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
 
       - name: Restore the Composer cache directory
         run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
@@ -87,7 +87,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
 
       - name: Download artifact
         uses: actions/download-artifact@v3
