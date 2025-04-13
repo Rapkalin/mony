@@ -3,7 +3,7 @@ A simple Test Driven Development Web App to monitor your daily expenses
 
 
 ![node](https://img.shields.io/badge/nodejs-v8.17.0-122D05.svg?style=flat-square)
-![php](https://img.shields.io/badge/PHP-v8.2-828cb7.svg?style=flat-square)
+![php](https://img.shields.io/badge/PHP-v8.3-828cb7.svg?style=flat-square)
 ![composer](https://img.shields.io/badge/Composer-v2.3.7-644D31.svg?style=flat-square)
 ![symfony](https://img.shields.io/badge/Symfony-v7-122D53.svg?style=flat-square)
 
@@ -13,16 +13,22 @@ A simple Test Driven Development Web App to monitor your daily expenses
 * [Back-end installation](#back-installation)
 * [Front-end installation](#front-installation)
 * [Unit Test](#unit-test)
+* [Migrations](#migrations)
 
 #### Description
-Framework: based on Symfony 7 based project.
+Framework: based on Symfony 7 based project with PHP 8.3.
 Mode: TDD project based on PHPUnit.
 Frontend: component oriented project based on reactJS.
 
 # <a name="installation"></a>PROJECT INSTALLATION
 ### 1/ GET PROJECT FROM GIT
+- Project uses the following gitflow for commit: 
+```
+git commit -m "feat(branchName): message"
+```
 
-```git
+- Use the following commands to install project:
+```
 git clone https://github.com/Rapkalin/mony.git
 git fetch
 git checkout master
@@ -30,7 +36,7 @@ git checkout master
 
 ### 2/ VHOST configuration
 #### Update your /etc/hosts
-Add host on your local OS (On Windows, files is locate to `C:\windows\System32\drivers\etc\`)
+- Add host on your local OS (On Windows, files is locate to `C:\windows\System32\drivers\etc\`)
 
 ```
 127.0.0.1   mony.local
@@ -61,6 +67,8 @@ for <http://mony.local>
 - This command will install the back dependencies linked to the *composer.json*
 ```
 compose install or compose i
+php bin/console cache:clear 
+php bin/console doctrine:migrations:migrate
 ```
 - Add your .env file using the .env.example file as a base with at least the below settings:
 
@@ -85,7 +93,6 @@ DB_PASSWORD=password_example
 
 ```
 php bin/console cache:clear 
-php bin/console doctrine:migrations:migrate
 php bin/console asset-map:compile
 php bin/console importmap:install
 ```
@@ -122,6 +129,41 @@ jobs:
       - name: TestMode - Unit tests
         uses: php-actions/phpunit@v3
         with:
-          php_version: 8.2
+          php_version: 8.3
           bootstrap: vendor/autoload.php
+```
+
+
+# <a name="migrations"></a>6/ Migrations
+### To run all migration
+
+```
+php bin/console cache:clear 
+php bin/console doctrine:migrations:status
+php bin/console doctrine:migrations:migrate
+```
+
+### To run one specific migration 
+- With the status command retrieve the version className for example: DoctrineMigrations\Version20250413175938
+
+```
+php bin/console cache:clear 
+php bin/console doctrine:migrations:status
+php bin/console doctrine:migrations:migrate
+```
+
+- Add and anti-slash before VersionsXXX
+- Then run the specific migration:
+
+```
+php bin/console cache:clear 
+php bin/console doctrine:migrations:migrate DoctrineMigrations\\Version20250413175938 --up
+```
+
+### To rollback one specific migration
+- Same as previous, get the className then run the following:
+
+```
+php bin/console cache:clear 
+php bin/console doctrine:migrations:migrate DoctrineMigrations\\Version20250413175938 --down
 ```
