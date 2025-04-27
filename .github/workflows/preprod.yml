@@ -22,7 +22,7 @@ jobs:
       - name: TestMode - Unit tests
         uses: php-actions/phpunit@v3
         with:
-          php_version: 8.2
+          php_version: 8.3
           bootstrap: vendor/autoload.php
           test_suffix: "Controller.php"
           args: --debug
@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 8.2 ]
+        php: [ 8.3 ]
 
     steps:
       - name: Checkout preprod-mony
@@ -41,7 +41,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
 
       - name: Install dependencies
         uses: php-actions/composer@v6
@@ -78,7 +78,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.3
 
       - name: Download artifact
         uses: actions/download-artifact@v3
@@ -119,7 +119,8 @@ jobs:
           port: 22
           script: |
             cd ~/preprod-mony/website
-            /usr/bin/php8.2-cli bin/console cache:clear --env=prod --no-interaction >> log_deploy.log
-            /usr/bin/php8.2-cli bin/console doctrine:migrations:migrate >> log_deploy.log
-            /usr/bin/php8.2-cli bin/console importmap:install >> log_deploy.log
-            /usr/bin/php8.2-cli bin/console asset:compile >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console cache:clear --env=prod --no-interaction >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console doctrine:migrations:migrate >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console importmap:install >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console sass:build >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console asset:compile >> log_deploy.log
