@@ -2,7 +2,7 @@
 A simple Test Driven Development Web App to monitor your daily expenses
 
 
-![node](https://img.shields.io/badge/nodejs-v8.17.0-122D05.svg?style=flat-square)
+![node](https://img.shields.io/badge/nodejs-v20.9.0-122D05.svg?style=flat-square)
 ![php](https://img.shields.io/badge/PHP-v8.3-828cb7.svg?style=flat-square)
 ![composer](https://img.shields.io/badge/Composer-v2.3.7-644D31.svg?style=flat-square)
 ![symfony](https://img.shields.io/badge/Symfony-v7-122D53.svg?style=flat-square)
@@ -95,6 +95,7 @@ DB_PASSWORD=password_example
 php bin/console cache:clear 
 php bin/console asset-map:compile
 php bin/console importmap:install
+php bin/console sass:build --watch
 ```
 
 # <a name="unit-tests"></a>5/ Unit test
