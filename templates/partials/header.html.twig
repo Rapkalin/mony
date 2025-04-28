@@ -1,6 +1,11 @@
-<nav>
+<nav class="main-navigation">
     <ul>
-        <li><a href="{{ path('user_login') }}">Login</a></li>
-        <li><a href="{{ path('user_login') }}">Subscribe</a></li>
+    {% if user is defined %}
+        <li><a class="button-link" href="{{ path('app_logout') }}">Logout</a></li>
+        <li><a class="button-link" href="{{ path('app_logout') }}">Add expense</a></li>
+    {% else %}
+        <li><a class="button-link" href="{{ path('app_login') }}">Login</a></li>
+        <li><a class="button-cta" href="{{ path('app_register') }}">Subscribe</a></li>
+    {% endif %}
     </ul>
 </nav>

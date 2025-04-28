@@ -1,0 +1,20 @@
+.cards-container {
+  display: grid;
+  justify-content: center;
+  gap: 25px;
+
+  .card-container {
+    display: flex;
+    grid-column: 1 / 2;
+    flex-wrap: wrap;
+
+    .card-img {
+      width: auto;
+      height: 80px;
+    }
+
+    h2, p {
+      margin: unset;
+    }
+  }
+}
