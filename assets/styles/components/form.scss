@@ -1,21 +1,31 @@
 @use "../basics/variables";
 
-.form {
+.form-login {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-}
 
-.form-input {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  .inputs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 
-  input {
-    box-sizing: border-box;
-    padding: 10px 5px;
-    border-radius: 5px;
-    border: 1px solid variables.$color-blue;
+    .form-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      input {
+        box-sizing: border-box;
+        padding: 10px 5px;
+        border-radius: 5px;
+        border: 1px solid variables.$color-blue;
+      }
+    }
   }
 }
+
+
+

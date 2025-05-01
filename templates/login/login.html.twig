@@ -18,15 +18,35 @@
             </div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <div class="form-input">
-            <label for="username">Username</label>
-            <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-        </div>
+        <h1 class="title">Please sign in</h1>
+        <div class="inputs-container">
+            <div class="form-input">
+                <label for="username" hidden>Username</label>
+                <input
+                    type="text"
+                    value="{{ last_username }}"
+                    name="_username"
+                    id="username"
+                    class="form-control"
+                    autocomplete="username"
+                    placeholder="username"
+                    required
+                    autofocus
+                >
+            </div>
 
-        <div class="form-input">
-            <label for="password">Password</label>
-            <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+            <div class="form-input">
+                <label for="password" hidden>Password</label>
+                <input
+                    type="password"
+                    name="_password"
+                    id="password"
+                    class="form-control"
+                    autocomplete="current-password"
+                    placeholder="password"
+                    required
+                >
+            </div>
         </div>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

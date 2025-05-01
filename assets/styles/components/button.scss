@@ -1,11 +1,12 @@
 @use "../basics/variables";
 
 .button-cta {
-  padding: 10px 15px;
+  padding: 13px 15px;
   background: variables.$color-white;
   text-decoration: none;
   color: variables.$color-black;
-  border-radius: 15px;
+  border-radius: 10px;
+  width: 150px;
 }
 
 .button-link {

@@ -6,3 +6,7 @@ body {
   font-family: variables.$font-family-base;
   color: variables.$color-black;
 }
+
+.hidden {
+  display: none;
+}
