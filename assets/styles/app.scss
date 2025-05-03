@@ -1,0 +1,21 @@
+/* BASICS */
+@import 'basics/variables';
+@import 'basics/general';
+
+/* PARTIALS */
+@import 'partials/header';
+
+/* COMPONENTS */
+@import "components/button";
+@import "components/form";
+
+/* FONT */
+@font-face {
+  font-family: 'Roboto';
+  src: url("basics/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto-italic';
+  src: url("basics/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf");
+}

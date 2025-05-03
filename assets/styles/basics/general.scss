@@ -1,0 +1,12 @@
+@use "../basics/variables";
+
+body {
+  background-color: variables.$color-camel-white;
+  margin: unset;
+  font-family: variables.$font-family-base;
+  color: variables.$color-black;
+}
+
+.hidden {
+  display: none;
+}

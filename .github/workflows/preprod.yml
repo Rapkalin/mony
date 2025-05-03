@@ -122,4 +122,5 @@ jobs:
             /usr/bin/php8.3-cli bin/console cache:clear --env=prod --no-interaction >> log_deploy.log
             /usr/bin/php8.3-cli bin/console doctrine:migrations:migrate >> log_deploy.log
             /usr/bin/php8.3-cli bin/console importmap:install >> log_deploy.log
+            /usr/bin/php8.3-cli bin/console sass:build >> log_deploy.log
             /usr/bin/php8.3-cli bin/console asset:compile >> log_deploy.log
