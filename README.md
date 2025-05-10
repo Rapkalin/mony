@@ -158,7 +158,7 @@ php bin/console doctrine:migrations:migrate
 
 ```
 php bin/console cache:clear 
-php bin/console doctrine:migrations:migrate DoctrineMigrations\\Version20250413175938 --up
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250413175938 --up
 ```
 
 ### To rollback one specific migration
@@ -166,5 +166,9 @@ php bin/console doctrine:migrations:migrate DoctrineMigrations\\Version202504131
 
 ```
 php bin/console cache:clear 
-php bin/console doctrine:migrations:migrate DoctrineMigrations\\Version20250413175938 --down
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250413175938 --down
 ```
+
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503220948 --down
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503220826 --down
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503210348 --down
