@@ -3,20 +3,44 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    {{ form_start(itemForm) }}
+        <h1 class="title">Add new expense</h1>
+        <div class="inputs-container">
+            <div class="form-input">
+                {{ form_label(itemForm.name, 'Name', {
+                    'label_attr': {'class': 'hidden'}
+                }) }}
+                {{ form_widget(itemForm.name) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(itemForm.price, 'Enter a price', {
+                    'label_attr': {'class': 'hidden'}
+                }) }}
+                {{ form_widget(itemForm.price) }}
+            </div>
+            <div class="form-input">
+                {{ form_label(itemForm.date, 'Date', {
+                    'label_attr': {'class': 'hidden'}
+                }) }}
+                {{ form_widget(itemForm.date) }}
+            </div>
 
-    <form method="post" class="form form-login">
-        <h1 class="h3 mb-3 font-weight-normal">Add new expense</h1>
-        <div class="form-input">
-            <label for="username">Username</label>
-            <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            <div class="form-input">
+                {{ form_label(itemForm.categories, 'Categories', {
+                    'label_attr': {'class': 'hidden'}
+                }) }}
+                {{ form_widget(itemForm.categories) }}
+            </div>
+
+            <div class="form-input">
+                {{ form_label(itemForm.newCategory, 'Add a new category', {
+                    'label_attr': {'class': 'hidden'}
+                }) }}
+                {{ form_widget(itemForm.newCategory) }}
+            </div>
         </div>
 
-        <input type="hidden" name="_target_path" value="{{ path('app_user') }}"/>
-        <button class="button-cta" type="submit">
-            Sign in
-        </button>
-    </form>
+        <button type="submit" class="button-cta">Register</button>
+    {{ form_end(itemForm) }}
+
 {% endblock %}

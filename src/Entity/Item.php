@@ -25,18 +25,19 @@ class Item
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
-    #[ORM\Column]
-    private array $Category = [];
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    private ?User $User = null;
 
     /**
-     * @var Collection<int, User>
+     * @var Collection<int, Category>
      */
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Items')]
-    private Collection $users;
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'items')]
+    #[ORM\JoinTable(name: 'category_item')]
+    private Collection $categories;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,40 +81,47 @@ class Item
         return $this;
     }
 
-    public function getCategory(): array
+    public function getUser(): ?User
     {
-        return $this->Category;
+        return $this->User;
     }
 
-    public function setCategory(array $Category): static
+    public function setUser(?User $User): static
     {
-        $this->Category = $Category;
+        $this->User = $User;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Category>
      */
-    public function getUsers(): Collection
+    public function getCategories(): Collection
     {
-        return $this->users;
+        return $this->categories;
     }
 
-    public function addUser(User $user): static
+    public function addCategory(Category $category): static
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->addItem($this);
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+            $category->addItem($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): static
+    public function addCategories(iterable $categories): void
     {
-        if ($this->users->removeElement($user)) {
-            $user->removeItem($this);
+        foreach ($categories as $category) {
+            $this->addCategory($category);
+        }
+    }
+
+    public function removeCategory(Category $category): static
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeItem($this);
         }
 
         return $this;
