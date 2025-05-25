@@ -17,10 +17,10 @@ class Item
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Name = null;
+    private ?string $name = null;
 
     #[ORM\Column]
-    private ?float $Price = null;
+    private ?float $price = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
@@ -47,24 +47,24 @@ class Item
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $Name): static
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }
 
     public function getPrice(): ?float
     {
-        return $this->Price;
+        return $this->price;
     }
 
     public function setPrice(float $Price): static
     {
-        $this->Price = $Price;
+        $this->price = $Price;
 
         return $this;
     }
@@ -93,12 +93,16 @@ class Item
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategories() : array
     {
-        return $this->categories;
+        $categories_collection = $this->categories->getIterator();
+        $categories = [];
+
+        foreach ($categories_collection as $category) {
+            $categories[] = $category->getName();
+        }
+
+        return $categories;
     }
 
     public function addCategory(Category $category): static

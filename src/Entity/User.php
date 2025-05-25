@@ -160,6 +160,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->items;
     }
 
+    public function getExpenses(): iterable
+    {
+        $items_collection = $this->getItems();
+        $user_expenses =  $items_collection->getIterator();
+
+        $expenses = [];
+        foreach ($user_expenses as $expense) {
+            $expenses[] = [
+                'title' => $expense->getName(),
+                'price' => $expense->getPrice(),
+                'date' => $expense->getDate()->format('Y-m-d'),
+                'categories' => $expense->getCategories()
+            ];
+        }
+
+        return $expenses;
+    }
+
     public function addItem(Item $item): static
     {
         if (!$this->items->contains($item)) {
