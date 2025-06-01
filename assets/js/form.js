@@ -1,6 +1,6 @@
 export function categoryHandling() {
     const input = document.getElementById('item_form_newCategory');
-    const select = document.getElementById('item_form_categories');
+    const select = document.getElementById('item_form_category');
 
     if (!input || !select) {
         console.warn('Category input or select not found');
