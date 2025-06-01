@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[AllowDynamicProperties] #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
+#[ORM\Table(name: 'users')]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -163,19 +164,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getExpenses(): iterable
     {
         $items_collection = $this->getItems();
-        $user_expenses =  $items_collection->getIterator();
-
         $expenses = [];
-        foreach ($user_expenses as $expense) {
-            $expenses[] = [
-                'title' => $expense->getName(),
-                'price' => $expense->getPrice(),
-                'date' => $expense->getDate()->format('Y-m-d'),
-                'categories' => $expense->getCategories()
-            ];
+
+        if ($user_expenses =  $items_collection->getIterator()) {
+            foreach ($user_expenses as $expense) {
+                $expenses[] = [
+                    'title' => $expense->getName(),
+                    'price' => $expense->getPrice(),
+                    'date' => $expense->getDate()->format('Y-m-d'),
+                    'categories' => $expense->getCategories()
+                ];
+            }
         }
 
         return $expenses;
+    }
+
+    public function getUserData() : array
+    {
+        $user_data = [
+            'id' => $this->getId(),
+            'name' => $this->getUsername(),
+        ];
+
+        if ($expenses =  $this->getExpenses()) {
+            $user_data['expenses'] = $expenses;
+        }
+
+        return $user_data;
+    }
+
+    public function getDashboardData(array $expenses): iterable
+    {
+        $dashboard_data = [];
+        foreach ($expenses as $expense) {
+            if (isset($dashboard_data[$expense['title']])) {
+                $dashboard_data[$expense['category']] .= $expense['price'];
+            } else {
+                $dashboard_data[$expense['category']] = $expense['price'];
+            }
+        }
+
+        return $dashboard_data;
     }
 
     public function addItem(Item $item): static

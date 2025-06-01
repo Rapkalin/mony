@@ -3,12 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ItemRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ItemRepository::class)]
+#[ORM\Table(name: 'items')]
 class Item
 {
     #[ORM\Id]
@@ -28,21 +27,24 @@ class Item
     #[ORM\ManyToOne(inversedBy: 'items')]
     private ?User $User = null;
 
-    /**
-     * @var Collection<int, Category>
-     */
-    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'items')]
-    #[ORM\JoinTable(name: 'category_item')]
-    private Collection $categories;
-
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'items')]
+    private Category $category;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category): static
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -93,38 +95,19 @@ class Item
         return $this;
     }
 
-    public function getCategories() : array
-    {
-        $categories_collection = $this->categories->getIterator();
-        $categories = [];
-
-        foreach ($categories_collection as $category) {
-            $categories[] = $category->getName();
-        }
-
-        return $categories;
-    }
-
     public function addCategory(Category $category): static
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
+        if (!$this->category->contains($category)) {
+            $this->category->add($category);
             $category->addItem($this);
         }
 
         return $this;
     }
 
-    public function addCategories(iterable $categories): void
-    {
-        foreach ($categories as $category) {
-            $this->addCategory($category);
-        }
-    }
-
     public function removeCategory(Category $category): static
     {
-        if ($this->categories->removeElement($category)) {
+        if ($this->category->removeElement($category)) {
             $category->removeItem($this);
         }
 

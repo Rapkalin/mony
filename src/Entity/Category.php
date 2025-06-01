@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\Table(name: 'categories')]
 class Category
 {
     #[ORM\Id]
@@ -21,7 +22,7 @@ class Category
     /**
      * @var Collection<int, Item>
      */
-    #[ORM\ManyToMany(targetEntity: Item::class, mappedBy: 'categories')]
+    #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'Category')]
     private Collection $items;
 
     public function __construct()
