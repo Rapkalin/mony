@@ -28,6 +28,9 @@ class Category
     #[ORM\Column(type: 'boolean')]
     private bool $is_default = false;
 
+    #[ORM\ManyToOne(inversedBy: 'categories')]
+    private ?User $User = null;
+
     public function __construct()
     {
         $this->expenses = new ArrayCollection();
@@ -82,6 +85,18 @@ class Category
     public function setIsDefault(bool $isDefault): static
     {
         $this->is_default = $isDefault;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): static
+    {
+        $this->User = $User;
 
         return $this;
     }

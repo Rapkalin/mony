@@ -22,7 +22,10 @@ final class Version20250503210024 extends AbstractMigration
         $this->addSql('CREATE TABLE categories (
             id INT AUTO_INCREMENT NOT NULL, 
             name VARCHAR(255) NOT NULL, 
-            is_default TINYINT(1) NOT NULL, 
+            is_default TINYINT(1) NOT NULL,
+            user_id INT DEFAULT NULL, 
+            CONSTRAINT FK_1F1B251EA76ED397 FOREIGN KEY (user_id) REFERENCES users (id),
+            INDEX IDX_1F1B251EA76ED397 (user_id),
             PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'
         );
 

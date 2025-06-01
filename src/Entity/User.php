@@ -49,9 +49,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'User')]
     private Collection $expenses;
 
+    /**
+     * @var Collection<int, Expense>
+     */
+    #[ORM\OneToMany(targetEntity: Category::class, mappedBy: 'User')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->expenses = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,6 +187,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $expenses;
     }
 
+    /**
+     * @return Collection<int, Expense>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
     public function getUserData() : array
     {
         $user_data = [
@@ -189,6 +204,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         if ($expenses =  $this->getUserExpenses()) {
             $user_data['expenses'] = $expenses;
+        }
+
+        if ($categories =  $this->getCategories()) {
+            $user_data['categories'] = $categories;
         }
 
         return $user_data;
