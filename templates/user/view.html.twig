@@ -3,7 +3,14 @@
 {% block body %}
     <h1>Welcome {{ user.name }}</h1>
 
-    {% include './components/expense-cards.html.twig' with {
-        expenses: user.expenses
-    } %}
+    {% if user.expenses is defined %}
+        {% include './components/expense-cards.html.twig' with {
+            expenses: user.expenses
+        } %}
+    {% else %}
+        <div class="container">
+            <div>No expense found</div>
+            <a class="button-cta" href="{{ path('add_item') }}">Add expense</a>
+        </div>
+    {% endif %}
 {% endblock %}
