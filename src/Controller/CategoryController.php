@@ -12,6 +12,15 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CategoryController extends AbstractController
 {
+
+    /*
+     * TODO: delete category
+     * if ($category->isDefault()) {
+            throw new AccessDeniedHttpException('Default categories cannot be modified or deleted.');
+        }
+     */
+
+    
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
     ) {}

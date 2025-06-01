@@ -1,4 +1,4 @@
-Version 1.0.0
+## Version 1.0.0 - unreleased
 
 - [Feature] MNY-1 : Add sign in screen
 - [Feature] MNY-2 : Add login screen
@@ -12,8 +12,9 @@ Version 1.0.0
 - [Feature] MNY-10 : SEO - Add meta title and description
 - [Feature] MNY-11 : SEO - Add sitemap
 - [Feature] MNY-12 : SEO - Add robots.txt
+- [Feature] MNY-13 : Add favicon
 
-Next Release
+## Next Release
 
 Backlog
 - [Security] Add double authentication
