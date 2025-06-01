@@ -24,14 +24,12 @@
                 }) }}
                 {{ form_widget(itemForm.date) }}
             </div>
-
             <div class="form-input">
-                {{ form_label(itemForm.categories, 'Categories', {
+                {{ form_label(itemForm.category, 'Category', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.categories) }}
+                {{ form_widget(itemForm.category) }}
             </div>
-
             <div class="form-input">
                 {{ form_label(itemForm.newCategory, 'Add a new category', {
                     'label_attr': {'class': 'hidden'}
