@@ -41,8 +41,8 @@ use App\Entity\Item;
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $categories = $form->get('categories')->getData();
-            $item->addCategories($categories);
+            $category = $form->get('category')->getData();
+            $item->addCategory($category);
             $item->setUser($this->user);
             $this->entityManager->persist($item);
             $this->entityManager->flush();

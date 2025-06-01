@@ -13,11 +13,7 @@ class UserController extends BaseController
     public function index(#[CurrentUser] User $user): Response
     {
         return $this->render('user/view.html.twig', [
-            'user' => [
-                'id' => $user->getId(),
-                'name' => $user->getUsername(),
-                'expenses' => $user->getExpenses()
-            ],
+            'user' => $user->getUserData(),
         ]);
     }
 }

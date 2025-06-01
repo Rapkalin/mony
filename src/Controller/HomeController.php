@@ -16,9 +16,16 @@ use Symfony\Component\Routing\Attribute\Route;
 
     private function getData(): array
     {
-        return $this->formatData($this->getControllerName(), [
+        $data = [
             'var_example' => 'Var example',
             'email' => 'email'
-        ]);
+        ];
+
+
+        if ($user = $this->getUser()) {
+            $data['user'] = $user;
+        }
+
+        return $this->formatData($this->getControllerName(), $data);
     }
 }
