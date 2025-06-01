@@ -39,8 +39,8 @@ class ExpenseFormType extends AbstractType
                 'placeholder' => 'Select a category',
                 'query_builder' => function (EntityRepository $repository) use ($user) {
                     return $repository->createQueryBuilder('c')
-                        ->where('c.user = :user OR c.is_default = true')
-                        ->setParameter('user', $user)
+                        ->where('c.User = :user_id OR c.is_default = true')
+                        ->setParameter('user_id', $user->getId())
                     ;
                 },
             ])
