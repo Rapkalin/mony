@@ -1,15 +1,15 @@
 /* BASICS */
-@import 'basics/variables';
-@import 'basics/general';
+@use 'basics/variables';
+@use 'basics/general';
 
 /* PARTIALS */
-@import 'partials/header';
+@use 'partials/header';
 
 /* COMPONENTS */
-@import "components/button";
-@import "components/form";
-@import "components/expense-cards";
-@import "components/category";
+@use "components/button";
+@use "components/form";
+@use "components/expense-cards";
+@use "components/category";
 
 /* FONT */
 @font-face {

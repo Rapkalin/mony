@@ -91,11 +91,20 @@ DB_PASSWORD=password_example
 - asset-map will compile copy and past the files in the assets dir into the public dir.
 - importmap will install all js dependencies in assets/vendor
 
+#### in production
 ```
+npm install
 php bin/console cache:clear 
 php bin/console asset-map:compile
 php bin/console importmap:install
-php bin/console sass:build --watch
+```
+
+#### in development
+
+```
+php bin/console cache:clear 
+npm install
+npm run watch
 ```
 
 # <a name="unit-tests"></a>5/ Unit test
