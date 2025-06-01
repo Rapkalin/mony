@@ -1,0 +1,5 @@
+# config/validator/validation.yaml
+App\Entity\Category:
+  properties:
+    name:
+      - Unique: ~

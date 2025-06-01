@@ -25,6 +25,9 @@ class Category
     #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'Category')]
     private Collection $expenses;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $is_default = false;
+
     public function __construct()
     {
         $this->expenses = new ArrayCollection();
@@ -67,6 +70,18 @@ class Category
     public function removeExpense(Expense $expense): static
     {
         $this->expenses->removeElement($expense);
+
+        return $this;
+    }
+
+    public function isDefault(): bool
+    {
+        return $this->is_default;
+    }
+
+    public function setIsDefault(bool $isDefault): static
+    {
+        $this->is_default = $isDefault;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Expense;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,6 +15,7 @@ class ExpenseFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $user = $options['user'];
         $builder
             ->add('name', options: [
                 'attr' => [
@@ -35,6 +37,12 @@ class ExpenseFormType extends AbstractType
                 'expanded' => false,
                 'required' => false,
                 'placeholder' => 'Select a category',
+                'query_builder' => function (EntityRepository $repository) use ($user) {
+                    return $repository->createQueryBuilder('c')
+                        ->where('c.user = :user OR c.is_default = true')
+                        ->setParameter('user', $user)
+                    ;
+                },
             ])
             ->add('newCategory', TextType::class, [
                 'mapped' => false,
@@ -50,6 +58,7 @@ class ExpenseFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Expense::class,
+            'user' => null,
         ]);
     }
 }

@@ -107,9 +107,7 @@ class Expense
 
     public function removeCategory(Category $category): static
     {
-        if ($this->category->removeElement($category)) {
-            $category->removeExpense($this);
-        }
+        $category->removeExpense($this);
 
         return $this;
     }

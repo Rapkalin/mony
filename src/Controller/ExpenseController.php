@@ -37,6 +37,7 @@ use App\Entity\Expense;
         $expense = new Expense();
         $form = $this->createForm(ExpenseFormType::class, $expense, [
             'attr' => ['class' => 'form form-expense'],
+            'user' => $this->user
         ]);
         $form->handleRequest($request);
 
@@ -73,6 +74,7 @@ use App\Entity\Expense;
         } else {
             $category = new Category();
             $category->setName($categoryName);
+            $category->setUser($this->getUser());
             $this->entityManager->persist($category);
             $this->entityManager->flush();
         }

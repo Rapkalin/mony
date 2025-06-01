@@ -5,8 +5,8 @@ Version 1.0.0
 - [Feature] MNY-3 : Add mail verification
 - [Feature] MNY-4 : Add dashboard screen
 - [Feature] MNY-5 : Add form to add a new expense: price, subject, category, date
-- [Feature] MNY-6 : Add possibility to modify an expense
-- [Feature] MNY-7 : Add possibility to delete an expense
+- [Feature] MNY-6 : Add possibility to delete & modify an expense
+- [Feature] MNY-7 : Add possibility to delete & modify a category
 - [Feature] MNY-8 : Add possibility to add an expense => redirect to add expense form
 - [Feature] MNY-9 : Security - Add CSP
 - [Feature] MNY-10 : SEO - Add meta title and description
