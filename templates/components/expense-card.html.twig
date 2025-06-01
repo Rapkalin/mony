@@ -1,10 +1,7 @@
 <div class="card-container">
     <img class="card-img" src="{{ asset('images/icon.png') }}" alt="icon">
     <div class="card-detail">
-        {% include 'components/categories.html.twig' with {
-            categories: expense.categories
-        } %}
-
+        <div class="category">{{ expense.category }}</div>
         <h2>{{ expense.title }}</h2>
         <p>{{ expense.price }}</p>
         <p>{{ expense.date }}</p>

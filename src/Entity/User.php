@@ -179,7 +179,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                     'title' => $expense->getName(),
                     'price' => $expense->getPrice(),
                     'date' => $expense->getDate()->format('Y-m-d'),
-                    'categories' => $expense->getCategories()
+                    'category' => $expense->getCategory()->getName()
                 ];
             }
         }
@@ -187,12 +187,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $expenses;
     }
 
-    /**
-     * @return Collection<int, Expense>
-     */
-    public function getCategories(): Collection
+    public function getCategories(): \ArrayIterator|iterable
     {
-        return $this->categories;
+        $categories_collection = $this->categories;
+
+        return $categories_collection->getIterator();
     }
 
     public function getUserData() : array

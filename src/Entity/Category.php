@@ -22,7 +22,7 @@ class Category
     /**
      * @var Collection<int, Expense>
      */
-    #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'Category')]
+    #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'category')]
     private Collection $expenses;
 
     #[ORM\Column(type: 'boolean')]

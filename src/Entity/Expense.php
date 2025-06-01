@@ -97,10 +97,7 @@ class Expense
 
     public function addCategory(Category $category): static
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
-            $category->addExpense($this);
-        }
+        $category->addExpense($this);
 
         return $this;
     }
