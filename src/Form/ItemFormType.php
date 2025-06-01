@@ -28,12 +28,13 @@ class ItemFormType extends AbstractType
             ->add('date', options: [
                 'widget' => 'single_text',
             ])
-            ->add('categories', EntityType::class, [
+            ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => false,
                 'required' => false,
+                'placeholder' => 'Select a category',
             ])
             ->add('newCategory', TextType::class, [
                 'mapped' => false,
