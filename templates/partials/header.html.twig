@@ -2,7 +2,7 @@
     <ul>
     {% if user is defined %}
         <li><a class="button-link" href="{{ path('app_user') }}">Home</a></li>
-        <li><a class="button-link" href="{{ path('add_item') }}">Add expense</a></li>
+        <li><a class="button-link" href="{{ path('add_expense') }}">Add expense</a></li>
         <li><a class="button-link" href="{{ path('app_logout') }}">Logout</a></li>
     {% else %}
         <li><a class="button-link" href="{{ path('home') }}">Home</a></li>

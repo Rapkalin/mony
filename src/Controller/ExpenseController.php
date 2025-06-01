@@ -4,16 +4,16 @@ namespace App\Controller;
 
 use AllowDynamicProperties;
 use App\Entity\Category;
-use App\Form\ItemFormType;
+use App\Form\ExpenseFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
-use App\Entity\Item;
+use App\Entity\Expense;
 
-#[AllowDynamicProperties] class ItemController extends BaseController
+#[AllowDynamicProperties] class ExpenseController extends BaseController
 {
     private UserInterface $user;
 
@@ -21,7 +21,7 @@ use App\Entity\Item;
         private readonly EntityManagerInterface $entityManager,
     ) {}
 
-    #[Route('/addItem', name: 'add_item', methods: ['GET', 'POST'])]
+    #[Route('/addexpense', name: 'add_expense', methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
         // usually you'll want to make sure the user is authenticated first,
@@ -34,25 +34,25 @@ use App\Entity\Item;
 
         $this->user = $this->getUser(); // returns your User object, or null if the user is not authenticated
 
-        $item = new Item();
-        $form = $this->createForm(ItemFormType::class, $item, [
-            'attr' => ['class' => 'form form-item'],
+        $expense = new Expense();
+        $form = $this->createForm(ExpenseFormType::class, $expense, [
+            'attr' => ['class' => 'form form-expense'],
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $category = $form->get('category')->getData();
-            $item->addCategory($category);
-            $item->setUser($this->user);
-            $this->entityManager->persist($item);
+            $expense->addCategory($category);
+            $expense->setUser($this->user);
+            $this->entityManager->persist($expense);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('add_item');
+            return $this->redirectToRoute('add_expense');
         }
 
-        return $this->render('item/form.html.twig', [
+        return $this->render('expense/form.html.twig', [
             'user' => $this->user,
-            'itemForm' => $form,
+            'expenseForm' => $form,
         ]);
     }
 

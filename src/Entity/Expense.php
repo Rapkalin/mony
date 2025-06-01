@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ItemRepository;
+use App\Repository\ExpenseRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ItemRepository::class)]
-#[ORM\Table(name: 'items')]
-class Item
+#[ORM\Entity(repositoryClass: ExpenseRepository::class)]
+#[ORM\Table(name: 'expenses')]
+class Expense
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,10 +24,10 @@ class Item
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
     private ?\DateTimeImmutable $date = null;
 
-    #[ORM\ManyToOne(inversedBy: 'items')]
+    #[ORM\ManyToOne(inversedBy: 'expenses')]
     private ?User $User = null;
 
-    #[ORM\ManyToOne(inversedBy: 'items')]
+    #[ORM\ManyToOne(inversedBy: 'expenses')]
     private Category $category;
 
     public function getId(): ?int
@@ -99,7 +99,7 @@ class Item
     {
         if (!$this->category->contains($category)) {
             $this->category->add($category);
-            $category->addItem($this);
+            $category->addExpense($this);
         }
 
         return $this;
@@ -108,7 +108,7 @@ class Item
     public function removeCategory(Category $category): static
     {
         if ($this->category->removeElement($category)) {
-            $category->removeItem($this);
+            $category->removeExpense($this);
         }
 
         return $this;

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use AllowDynamicProperties;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -11,7 +12,11 @@ use Symfony\Component\Routing\Attribute\Route;
     #[Route('/', name: 'home')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig', $this->getData());
+        $user = $this->getUser();
+
+        return $user ?
+            $this->redirectToRoute('app_user') :
+            $this->render('home/index.html.twig', $this->getData());
     }
 
     private function getData(): array
@@ -20,11 +25,6 @@ use Symfony\Component\Routing\Attribute\Route;
             'var_example' => 'Var example',
             'email' => 'email'
         ];
-
-
-        if ($user = $this->getUser()) {
-            $data['user'] = $user;
-        }
 
         return $this->formatData($this->getControllerName(), $data);
     }

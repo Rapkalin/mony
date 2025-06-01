@@ -3,42 +3,42 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {{ form_start(itemForm) }}
+    {{ form_start(expenseForm) }}
         <h1 class="title">Add new expense</h1>
         <div class="inputs-container">
             <div class="form-input">
-                {{ form_label(itemForm.name, 'Name', {
+                {{ form_label(expenseForm.name, 'Name', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.name) }}
+                {{ form_widget(expenseForm.name) }}
             </div>
             <div class="form-input">
-                {{ form_label(itemForm.price, 'Enter a price', {
+                {{ form_label(expenseForm.price, 'Enter a price', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.price) }}
+                {{ form_widget(expenseForm.price) }}
             </div>
             <div class="form-input">
-                {{ form_label(itemForm.date, 'Date', {
+                {{ form_label(expenseForm.date, 'Date', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.date) }}
+                {{ form_widget(expenseForm.date) }}
             </div>
             <div class="form-input">
-                {{ form_label(itemForm.category, 'Category', {
+                {{ form_label(expenseForm.category, 'Category', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.category) }}
+                {{ form_widget(expenseForm.category) }}
             </div>
             <div class="form-input">
-                {{ form_label(itemForm.newCategory, 'Add a new category', {
+                {{ form_label(expenseForm.newCategory, 'Add a new category', {
                     'label_attr': {'class': 'hidden'}
                 }) }}
-                {{ form_widget(itemForm.newCategory) }}
+                {{ form_widget(expenseForm.newCategory) }}
             </div>
         </div>
 
         <button type="submit" class="button-cta">Register</button>
-    {{ form_end(itemForm) }}
+    {{ form_end(expenseForm) }}
 
 {% endblock %}

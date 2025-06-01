@@ -44,14 +44,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $email = null;
 
     /**
-     * @var Collection<int, Item>
+     * @var Collection<int, Expense>
      */
-    #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'User')]
-    private Collection $items;
+    #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'User')]
+    private Collection $expenses;
 
     public function __construct()
     {
-        $this->items = new ArrayCollection();
+        $this->expenses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,19 +154,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Item>
+     * @return Collection<int, Expense>
      */
-    public function getItems(): Collection
+    public function getExpenses(): Collection
     {
-        return $this->items;
+        return $this->expenses;
     }
 
-    public function getExpenses(): iterable
+    public function getUserExpenses(): iterable
     {
-        $items_collection = $this->getItems();
+        $expenses_collection = $this->getExpenses();
         $expenses = [];
 
-        if ($user_expenses =  $items_collection->getIterator()) {
+        if ($user_expenses =  $expenses_collection->getIterator()) {
             foreach ($user_expenses as $expense) {
                 $expenses[] = [
                     'title' => $expense->getName(),
@@ -187,7 +187,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             'name' => $this->getUsername(),
         ];
 
-        if ($expenses =  $this->getExpenses()) {
+        if ($expenses =  $this->getUserExpenses()) {
             $user_data['expenses'] = $expenses;
         }
 
@@ -208,22 +208,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $dashboard_data;
     }
 
-    public function addItem(Item $item): static
+    public function addExpense(Expense $expense): static
     {
-        if (!$this->items->contains($item)) {
-            $this->items->add($item);
-            $item->setUser($this);
+        if (!$this->expenses->contains($expense)) {
+            $this->expenses->add($expense);
+            $expense->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeItem(Item $item): static
+    public function removeExpense(Expense $expense): static
     {
-        if ($this->items->removeElement($item)) {
+        if ($this->expenses->removeElement($expense)) {
             // set the owning side to null (unless already changed)
-            if ($item->getUser() === $this) {
-                $item->setUser(null);
+            if ($expense->getUser() === $this) {
+                $expense->setUser(null);
             }
         }
 

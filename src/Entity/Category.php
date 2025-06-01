@@ -20,14 +20,14 @@ class Category
     private ?string $name = null;
 
     /**
-     * @var Collection<int, Item>
+     * @var Collection<int, Expense>
      */
-    #[ORM\OneToMany(targetEntity: Item::class, mappedBy: 'Category')]
-    private Collection $items;
+    #[ORM\OneToMany(targetEntity: Expense::class, mappedBy: 'Category')]
+    private Collection $expenses;
 
     public function __construct()
     {
-        $this->items = new ArrayCollection();
+        $this->expenses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,25 +48,25 @@ class Category
     }
 
     /**
-     * @return Collection<int, Item>
+     * @return Collection<int, Expense>
      */
-    public function getItems(): Collection
+    public function getExpenses(): Collection
     {
-        return $this->items;
+        return $this->expenses;
     }
 
-    public function addItem(Item $item): static
+    public function addExpense(Expense $expense): static
     {
-        if (!$this->items->contains($item)) {
-            $this->items->add($item);
+        if (!$this->expenses->contains($expense)) {
+            $this->expenses->add($expense);
         }
 
         return $this;
     }
 
-    public function removeItem(Item $item): static
+    public function removeExpense(Expense $expense): static
     {
-        $this->items->removeElement($item);
+        $this->expenses->removeElement($expense);
 
         return $this;
     }
