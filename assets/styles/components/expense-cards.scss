@@ -1,8 +1,9 @@
 @use '../basics/functions' as fn;
 
 .cards-container {
-    display: grid;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
     gap: fn.toRem(20);
 
     .card-container {

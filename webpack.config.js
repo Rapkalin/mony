@@ -14,9 +14,6 @@ Encore
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
 
-    // Resolves app.scss path in app.js
-    .enableSassLoader()
-
     /*
      * ENTRY CONFIG
      *
@@ -60,8 +57,8 @@ Encore
         config.corejs = '3.38';
     })
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
+    // Resolves app.scss path in app.js
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
