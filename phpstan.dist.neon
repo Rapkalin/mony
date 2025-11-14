@@ -1,0 +1,11 @@
+parameters:
+    level: 4
+    paths:
+        - src/Controller
+        - src/Entity
+        - src/Form
+        - src/Repository
+        - src/Security
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        - identifier: property.unusedType

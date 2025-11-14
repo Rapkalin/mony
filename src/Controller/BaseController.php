@@ -6,6 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BaseController extends AbstractController
 {
+
+    /**
+     * @param string $controller_name
+     * @param string[] $extraData
+     * @return string[]
+     */
     protected function formatData(string $controller_name, array $extraData = []): array
     {
         $data = [

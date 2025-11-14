@@ -19,6 +19,9 @@ use Symfony\Component\Routing\Attribute\Route;
             $this->render('home/index.html.twig', $this->getData());
     }
 
+    /**
+     * @return string[]
+     */
     private function getData(): array
     {
         $data = [

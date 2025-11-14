@@ -6,6 +6,14 @@ body {
     margin: unset;
     font-family: var.$font-family-base;
     color: var.$color-black;
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: fn.toRem(25) 0;
+        max-width: fn.toRem(1920);
+    }
 }
 
 h1, h2, h3, h4 {
@@ -14,16 +22,6 @@ h1, h2, h3, h4 {
 
 .hidden {
     display: none;
-}
-
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: fn.toRem(25) 0;
-    height: 100dvh;
-    width: 100dvw;
-    max-width: fn.toRem(1920);
 }
 
 .container {

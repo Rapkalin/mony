@@ -14,6 +14,7 @@ A simple Test Driven Development Web App to monitor your daily expenses
 * [Front-end installation](#front-installation)
 * [Unit Test](#unit-test)
 * [Migrations](#migrations)
+* [PHPStan](#phpstan)
 
 #### Description
 Framework: based on Symfony 7 based project with PHP 8.3.
@@ -178,6 +179,21 @@ php bin/console cache:clear
 php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250413175938 --down
 ```
 
-php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503220948 --down
-php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503220826 --down
-php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20250503210348 --down
+### 7/ PHPStan
+#### Analyse the code
+The phpstan config file is phpstan.dist.neon
+Run the following command to globally analyse the code. 
+```
+vendor/bin/phpstan analyse
+```
+
+If you encounter a memory limit then you can target a specific folder with the below command:
+```
+vendor/bin/phpstan analyse src/xxx
+```
+
+If you get this error:
+'Ignored error pattern property.unusedType was not matched in reported  
+errors.'
+
+It is because we manually asked to ignored a type of error that wasn't trigger.
