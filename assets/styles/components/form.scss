@@ -1,28 +1,29 @@
-@use "../basics/variables";
+@use "../basics/variables" as var;
+@use "../basics/functions" as fn;
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: fn.toRem(20);
 
   .inputs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: fn.toRem(20);
 
     .form-input {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: fn.toRem(10);
       min-width: 100%;
 
       input, select {
         box-sizing: border-box;
-        padding: 10px 5px;
-        border-radius: 5px;
-        border: 1px solid variables.$color-blue;
+        padding: fn.toRem(10) fn.toRem(5);
+        border-radius: fn.toRem(5);
+        border: fn.toRem(1) solid var.$color-blue;
         min-width: 100%;
       }
 
@@ -32,6 +33,3 @@
     }
   }
 }
-
-
-

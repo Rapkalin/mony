@@ -1,7 +1,9 @@
+@use '../basics/functions' as fn;
+
 .cards-container {
   display: grid;
   justify-content: center;
-  gap: 25px;
+  gap: fn.toRem(25);
 
   .card-container {
     display: flex;
@@ -10,7 +12,7 @@
 
     .card-img {
       width: auto;
-      height: 80px;
+      height: fn.toRem(80);
     }
 
     h2, p {

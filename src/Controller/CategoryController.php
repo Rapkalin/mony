@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
         }
      */
 
-    
+
     public function __construct(
         private readonly EntityManagerInterface $entityManager,
     ) {}

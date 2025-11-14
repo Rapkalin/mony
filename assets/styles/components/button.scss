@@ -1,16 +1,17 @@
-@use "../basics/variables";
+@use "../basics/variables" as var;
+@use "../basics/functions" as fn;
 
 .button-cta {
-  padding: 13px 15px;
-  background: variables.$color-white;
+  padding: fn.toRem(13) fn.toRem(15);
+  background: var.$color-white;
   text-decoration: none;
-  color: variables.$color-black;
-  border-radius: 10px;
-  width: 150px;
+  color: var.$color-black;
+  border-radius: fn.toRem(10);
+  width: fn.toRem(150);
 }
 
 .button-link {
   text-decoration: none;
-  color: variables.$color-camel-white;
-  border-radius: 15px;
+  color: var.$color-camel-white;
+  border-radius: fn.toRem(15);
 }
