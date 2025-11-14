@@ -2,16 +2,16 @@
 @use "../basics/functions" as fn;
 
 .button-cta {
-  padding: fn.toRem(13) fn.toRem(15);
-  background: var.$color-white;
-  text-decoration: none;
-  color: var.$color-black;
-  border-radius: fn.toRem(10);
-  width: fn.toRem(150);
+    padding: fn.toRem(13) fn.toRem(15);
+    background: var.$color-white;
+    text-decoration: none;
+    color: var.$color-black;
+    border-radius: fn.toRem(10);
+    width: fn.toRem(150);
 }
 
 .button-link {
-  text-decoration: none;
-  color: var.$color-camel-white;
-  border-radius: fn.toRem(15);
+    text-decoration: none;
+    color: var.$color-camel-white;
+    border-radius: fn.toRem(15);
 }

@@ -1,6 +1,6 @@
 @use "../basics/functions" as fn;
 
 .categories {
-  display: flex;
-  gap: fn.toRem(10);
+    display: flex;
+    gap: fn.toRem(10);
 }

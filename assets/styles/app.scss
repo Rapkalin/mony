@@ -3,6 +3,7 @@
 @use 'basics/general';
 
 /* PARTIALS */
+@use 'partials/footer';
 @use 'partials/header';
 
 /* COMPONENTS */
@@ -13,11 +14,11 @@
 
 /* FONT */
 @font-face {
-  font-family: 'Roboto';
-  src: url("basics/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf");
+    font-family: 'Roboto';
+    src: url("basics/fonts/Roboto/Roboto-VariableFont_wdth,wght.ttf");
 }
 
 @font-face {
-  font-family: 'Roboto-italic';
-  src: url("basics/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf");
+    font-family: 'Roboto-italic';
+    src: url("basics/fonts/Roboto/Roboto-Italic-VariableFont_wdth,wght.ttf");
 }

@@ -1,17 +1,17 @@
 @use "../basics/variables";
 
 .main-navigation {
-  display: flex;
-  justify-content: flex-end;
-  padding: 5px 20px;
-  background-color: variables.$color-blue;
-
-  ul {
     display: flex;
-    gap: 20px;
+    justify-content: flex-end;
+    padding: 5px 20px;
+    background-color: variables.$color-blue;
 
-    li {
-      list-style-type: none;
+    ul {
+        display: flex;
+        gap: 20px;
+
+        li {
+            list-style-type: none;
+        }
     }
-  }
 }

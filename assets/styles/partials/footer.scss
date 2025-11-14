@@ -1,0 +1,10 @@
+@use "../basics/variables" as var;
+@use "../basics/functions" as fn;
+
+.footer {
+    .version-site {
+        text-align: center;
+        padding: fn.toRem(10) 0;
+        background-color: var.$color-light-blue;
+    }
+}
