@@ -79,6 +79,8 @@ APP_SECRET=xxx
 APP_DEBUG=1
 
 DATABASE_URL="mysql://username:password@127.0.0.1:3306/databaseName?serverVersion=8.0.32&charset=utf8mb4"
+MESSENGER_TRANSPORT_DSN=doctrine://default
+MAILER_DSN=sendmail://default
 
 ### This is used for cron script purpose
 DB_HOST=host_example
