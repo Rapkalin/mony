@@ -1,16 +1,129 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Welcome {{ user.name }}</h1>
+    <div class="container">
+        <div class="left-side">
 
-    {% if user.expenses is defined %}
-        {% include './components/expense-cards.html.twig' with {
-            expenses: user.expenses
-        } %}
-    {% else %}
-        <div class="container">
-            <div>No expense found</div>
-            <a class="button-cta" href="{{ path('add_expense') }}">Add expense</a>
+            <div class="other">
+                <div class="balance">
+                    <h3>Remaining balance</h3>
+                    <div class="price">1250€</div>
+                    <div class="summary">
+                        <div id="summary-income" class="summary-container">
+                            <p class="summary-title">Income this month</p>
+                            <p class="summary-price price-income">3500,00</p>
+                        </div>
+                        <div id="summary-expense" class="summary-container">
+                            <p class="summary-title">Expenses this month</p>
+                            <p class="summary-price price-expense">2500,00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="balance">
+                    <h3>Remaining balance</h3>
+                    <div class="price">1250€</div>
+                    <div class="summary">
+                        <div id="summary-income" class="summary-container">
+                            <p class="summary-title">Income this month</p>
+                            <p class="summary-price price-income">3500,00</p>
+                        </div>
+                        <div id="summary-expense" class="summary-container">
+                            <p class="summary-title">Expenses this month</p>
+                            <p class="summary-price price-expense">2500,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="remaining">
+                <h3 class="remaining-title">Remaining by category</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">CATEGORY</th>
+                            <th scope="col">REMAINING</th>
+                            <th scope="col">BUDGET</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="remaining-category">
+                                    <div class="rounded-full-pikachu"></div>
+                                    <span>Groceries</span>
+                                </div>
+                            </td>
+                            <td class="remaining-budget">114,5€</td>
+                            <td class="total-budget">400€</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="remaining-category">
+                                    <div class="rounded-full-pikachu"></div>
+                                    <span>Rent</span>
+                                </div>
+                            </td>
+                            <td class="remaining-budget">0,00€</td>
+                            <td class="total-budget">1500,00€</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="remaining-category">
+                                    <div class="rounded-full-pikachu"></div>
+                                    <span>Transport</span>
+                                </div>
+                            </td>
+                            <td class="remaining-budget">45,00€</td>
+                            <td class="total-budget">100,00€</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    {% endif %}
+
+        <div class="right-side">
+            <div class="expense-breadown">
+                <h3>Expense breakdown</h3>
+                <div>charts</div>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent activity</h3>
+                <div class="activities-list">
+                    <div class="activity-card">
+                        <svg class="icon"></svg>
+                        <div class="description">
+                            <div class="title"></div>
+                            <div class="date"></div>
+                        </div>
+                        <div class="price">-85,00</div>
+                    </div>
+                    <div class="activity-card">
+                        <svg class="icon"></svg>
+                        <div class="description">
+                            <div class="title"></div>
+                            <div class="date"></div>
+                        </div>
+                        <div class="price">-85,00</div>
+                    </div>
+                    <div class="activity-card">
+                        <svg class="icon"></svg>
+                        <div class="description">
+                            <div class="title"></div>
+                            <div class="date"></div>
+                        </div>
+                        <div class="price">-85,00</div>
+                    </div>
+                    <div class="activity-card">
+                        <svg class="icon"></svg>
+                        <div class="description">
+                            <div class="title"></div>
+                            <div class="date"></div>
+                        </div>
+                        <div class="price">-85,00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
